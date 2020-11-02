@@ -1,0 +1,23 @@
+version: '3'
+services:
+    db:
+      build: .
+      image: "epidemicz/oracle-11g-se"
+      restart: "unless-stopped"
+      ports:
+        - 1521:1521
+        - 5500:5500
+        # - 8080:8080
+      volumes:
+        - ./install:/install
+        - ./db-setup-scripts:/db-setup-scripts
+        - ./dump:/opt/oracle/dpdump
+      environment: 
+        - "ORACLE_PWD=oracle"
+        # schema of the dump you want to import
+        #- "SOURCE_SCHEMA=change-or-delete-me"
+        # tablespace of the dump you want to import
+        #- "SOURCE_TABLESPACE=change-or-delete-me"
+        # you may want to exclude `GRANT`: `EXCLUDE=USER,GRANT', if your dump contains them
+        # if you dont have anything to exclude, remove the variable
+        #- "EXCLUDE=user"
