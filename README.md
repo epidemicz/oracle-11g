@@ -40,3 +40,11 @@ OS Users and Passwords:
 Database Users and Passwords:
 * sys/oracle
 * localdev/localdev (created on initialization for data pump import)
+
+## Connecting to the database
+Open the terminal, switch user to oracle and you'll have access to sqlplus. 
+
+```sh
+su oracle
+sqlplus / as sysdba
+```
